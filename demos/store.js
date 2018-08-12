@@ -7,7 +7,6 @@ const store = dogx.store({
   },
   mutations: {
     increment(state, ...num) {
-      console.log(num);
       state.count = state.count + num.reduce((partial, value) =>
         partial + value
       );
@@ -24,7 +23,6 @@ const store = dogx.store({
   actions: {
     async incrementAsync({commit}, {amount}) {
       await commit('increment', amount);
-      await commit('decrement', 40);
     }
   }
 });
