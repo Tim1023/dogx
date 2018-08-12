@@ -1,7 +1,15 @@
+const allMutations = new Set();
+const observe = mutation => allMutations.add(mutation);
+
 const constructor = {
   commit(mutation, ...payload){
+    console.log(this);
+    console.log(mutation, payload);
     this.mutations[mutation](this.state ,...payload);
-  }
+  },
+  dispatch(action, ...payload){
+    this.actions[action](this, ...payload);
+  },
 };
 const store = obj => new Proxy({...obj, ...constructor}, {set, get});
 
@@ -12,7 +20,6 @@ function set(target, key, value) {
   target[key] = value;
 }
 function get(target, key, receiver) {
-
   if (key in target) {
     return target[key];
   } else {
