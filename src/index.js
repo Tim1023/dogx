@@ -1,6 +1,6 @@
 const constructor = {
-  commit(mutation){
-    this.mutations[mutation](this.state);
+  commit(mutation, ...payload){
+    this.mutations[mutation](this.state ,...payload);
   }
 };
 const store = obj => new Proxy({...obj, ...constructor}, {set, get});

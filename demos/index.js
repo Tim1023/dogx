@@ -6,12 +6,12 @@ const store = dogx.store({
     count: 20
   },
   mutations: {
-    increment (state) {
-      state.count++;
+    increment (state, num, numTwo) {
+      state.count = state.count + num +numTwo;
       console.log(state)
     }
   }
 });
 
 console.log(store.state);
-store.commit('increment');
+store.commit('increment',10,20);
