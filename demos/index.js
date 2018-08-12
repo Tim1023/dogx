@@ -1,20 +1,17 @@
-import {observable, observe} from '../src/index.js';
+import dogx from '../src/index.js';
 
-const person = observable({
-  name: '张三',
-  age: 20
+const store = dogx.store({
+  state: {
+    name: '张三',
+    count: 20
+  },
+  mutations: {
+    increment (state) {
+      state.count++;
+      console.log(state)
+    }
+  }
 });
 
-const print = () => {
-  console.log(`${person.name}, ${person.age}`)
-  document.getElementById('demo').innerText = `${person.name}, ${person.age}`
-}
-
-observe(print);
-person.name = '李四';
-person.age = 24;
-
-const older = () => {
-  person.age++
-}
-document.getElementById('older').onclick = older;
+console.log(store.state);
+store.commit('increment');

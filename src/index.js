@@ -1,14 +1,24 @@
-const queuedObservers = new Set();
+const constructor = {
+  commit(mutation){
+    this.mutations[mutation](this.state);
+  }
+};
+const store = obj => new Proxy({...obj, ...constructor}, {set, get});
 
-const observe = fn => queuedObservers.add(fn);
-const observable = obj => new Proxy(obj, {set});
-
-function set(target, key, value, receiver) {
-  const result = Reflect.set(target, key, value, receiver);
-  queuedObservers.forEach(observer => observer());
-  return result;
+function set(target, key, value) {
+  if (!target.hasOwnProperty(key)) {
+    console.error(`Please declare the "${key}" property name before using it`);
+  }
+  target[key] = value;
 }
-export {
-  observable,
-  observe,
+function get(target, key, receiver) {
+
+  if (key in target) {
+    return target[key];
+  } else {
+    throw new ReferenceError(`Property "${key}" does not exist.`);
+  }
+}
+export default {
+  store,
 }
