@@ -3,7 +3,16 @@ import dogx from '../src/index.js';
 const store = dogx.store({
   state: {
     name: '张三',
-    count: 20
+    count: 10,
+    todos: [
+      {id: 1, text: '...', done: true},
+      {id: 2, text: '...', done: false}
+    ],
+  },
+  getters: {
+    doneTodos: state => {
+      return state.todos.filter(todo => todo.done)
+    }
   },
   mutations: {
     increment(state, ...num) {
