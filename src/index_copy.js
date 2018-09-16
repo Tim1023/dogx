@@ -25,9 +25,8 @@ const constructor = {
 };
 
 function gettersGet(target, key, receiver) {
-//   console.log(staging.state)
-//   console.log(target[key]);
-// console.log(target[key](staging.state))
+  console.log(target[key]);
+
   return target[key](staging.state);
 }
 

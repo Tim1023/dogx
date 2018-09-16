@@ -4,7 +4,8 @@ const print = () => {
   console.log(`${store.state.name}, ${store.state.count}`)
 };
 const change = () => {
-  document.getElementById('demo').innerText = `${store.state.name}, ${store.state.count}`
+  document.getElementById('demo').innerText = `${store.state.name}, ${store.state.count}`;
+  document.getElementById('count-size').innerText = `${store.getters.bigCount}`
 };
 
 store.observe(change);
@@ -29,6 +30,6 @@ const older = () => {
 
 document.getElementById('older').onclick = older;
 
-console.log(store.getters.doneTodos);
+// console.log(store.getters.bigCount);
 
 mounted();

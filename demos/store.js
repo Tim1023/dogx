@@ -10,8 +10,11 @@ const store = dogx.store({
     ],
   },
   getters: {
-    doneTodos: state => {
-      state.todos.filter(todo => todo.done)
+    bigCount: state => {
+      const size = state.count > 100 ? 'BIG' : 'SMALL';
+      console.log('CALLED GETTER');
+      console.log(size);
+      return size
     }
   },
   mutations: {
