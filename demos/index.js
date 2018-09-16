@@ -11,14 +11,18 @@ const change = () => {
 store.observe(change);
 store.observe(print);
 
-async function mounted() {
+function mounted() {
 
-  await store.commit('increment', 10, 20);
 
-  await store.dispatch('incrementAsync', {
+  store.dispatch('incrementAsyncTest', {
     amount: 23
   });
+  // store.commit('increment', 10, 20);
+  // store.commit('increment', 5);
 
+  store.dispatch('incrementAsync', {
+    amount: 2
+  });
 }
 
 

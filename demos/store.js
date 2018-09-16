@@ -22,19 +22,24 @@ const store = dogx.store({
       state.count = state.count + num.reduce((partial, value) =>
         partial + value
       );
-      console.log(state)
+      // console.log(state)
     },
     decrement(state, ...num) {
       console.log(num);
       state.count = state.count - num.reduce((partial, value) =>
         partial + value
       );
-      console.log(state)
+      // console.log(state)
     }
   },
   actions: {
-    async incrementAsync({commit}, {amount}) {
-      await commit('increment', amount);
+    incrementAsync({commit}, {amount}) {
+      commit('increment', amount);
+    },
+    incrementAsyncTest({commit}, {amount}) {
+      commit('increment', amount);
+      commit('increment', 10, 20);
+      commit('increment', 5);
     }
   }
 });
