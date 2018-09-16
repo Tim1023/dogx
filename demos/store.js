@@ -11,7 +11,7 @@ const store = dogx.store({
   },
   getters: {
     doneTodos: state => {
-      return state.todos.filter(todo => todo.done)
+      state.todos.filter(todo => todo.done)
     }
   },
   mutations: {

@@ -22,10 +22,10 @@ const constructor = {
   observe(fn) {
     queuedObservers.add(fn);
   },
-
 };
 
-function gettersGet(target, key) {
+function gettersGet(target, key, receiver) {
+  console.log(target[key]);
 
   return target[key](staging.state);
 }
@@ -39,8 +39,6 @@ function set(target, key, value, receiver) {
 
 function get(target, key, receiver) {
   staging = target;
-  if (key === 'commit') {
-  }
   if (key in target) {
     return Reflect.get(target, key, receiver);
   } else {
