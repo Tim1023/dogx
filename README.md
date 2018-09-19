@@ -5,9 +5,10 @@ State management with ES6 Proxies.
 
 2.Dependency track.
 
-3.Match Vuex API(Disptach, Commite,Store,State.....).
+3.Match Vuex API(Disptach, Commite, Getter, Store,State.....).
 
 4.Render Observer.
 
+5.Computed Data.
 
 WIP
